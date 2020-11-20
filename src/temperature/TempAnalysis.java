@@ -1,36 +1,27 @@
 
 package temperature;
 
-public class TempAnalysis {
-    private int plantid=1;
-    private double tempair;
-    private double tempdirt;
-    private int count=0;
-    private TempStatus tempstatus;
+public final class TempAnalysis {
+    private final Temperature[] temp;
+    private int count=-1;
 
-    public TempAnalysis(double tempair, double tempdirt) {
-        this.tempair = tempair;
-        this.tempdirt = tempdirt;
+    public TempAnalysis(int count) {
+        temp = new Temperature[count];
     }
     
-    public TempStatus getStatus(){
-        if(tempair >= 35 && tempdirt >= 35){
-            this.tempstatus = TempStatus.VERYHOT;
-        }else if(tempair >= 30 && tempdirt >= 30){
-            this.tempstatus = TempStatus.HOT;
-        }else if(tempair >= 25 && tempdirt >= 25){
-            this.tempstatus = TempStatus.WARM;
-        }else if(tempair >= 20 && tempdirt >= 20){
-            this.tempstatus = TempStatus.COLD;
-        }else{
-            this.tempstatus = TempStatus.VERYCOLD;
+    public void add(double tempair, double tempdirt){
+        if(count<=temp.length){
+            count++;
+            temp[count] = new Temperature(tempair, tempdirt);
         }
-        return tempstatus;
     }
-
+    
     @Override
     public String toString() {
-        return "TempAnalysis{" + "plantid=" + plantid + ", tempair=" + tempair + ", tempdirt=" + tempdirt + ", tempstatus=" + tempstatus + '}';
-    }
-    
+        String s = "" ;
+        for(int i=0;i<=count;i++){
+            s = s + "\n" + "plantid : " + (i+1) + " , " + temp[i];
+        }
+        return "TempAnalysis(" + s +" \n)";
+    }    
 }

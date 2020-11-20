@@ -2,13 +2,14 @@
 package temperature;
 
 public class Temperature {
-    private int plantid=1;
     private final double tempair;
     private final double tempdirt;
+    private TempStatus tempstatus = null;
     
     public Temperature(double tempair, double tempdirt) {
         this.tempair = tempair;
         this.tempdirt = tempdirt;
+        getStatus(tempair,tempdirt);
     }
     
     public double getTempair(){
@@ -18,13 +19,24 @@ public class Temperature {
         return tempdirt;
     }
     
-    public double[] getTemp() {
-        return new double[]{this.tempair, this.tempdirt};
+    public TempStatus getStatus(double tempair,double tempdirt){
+    if((2*(tempair)+3*(tempdirt))/(5) >= 35) {
+        this.tempstatus = TempStatus.VERYHOT;
+    }else if((2*(tempair)+3*(tempdirt))/(5) >= 30){
+        this.tempstatus = TempStatus.HOT;
+    }else if((2*(tempair)+3*(tempdirt))/(5) >= 25){
+        this.tempstatus = TempStatus.WARM;
+    }else if((2*(tempair)+3*(tempdirt))/(5) >= 20){
+        this.tempstatus = TempStatus.COLD;
+    }else{
+        this.tempstatus = TempStatus.VERYCOLD;
+    }
+        return tempstatus;
     }
     
     @Override
     public String toString() {
-        return "Temperature{ " + "plantid = " + plantid + " , tempair = " + tempair + " celcius , tempdirt = " + tempdirt + " celcius }";
+        return "Temperature{ tempair = " + tempair + " celcius , tempdirt = " + tempdirt + " celcius , status = " + tempstatus + " }";
     }
     
 }
