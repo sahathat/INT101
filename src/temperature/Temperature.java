@@ -35,17 +35,17 @@ public class Temperature {
 
     //condition status of tempair and tempdirt
     public TempStatus getStatus(double tempair,double tempdirt){
-    if((2*(tempair)+3*(tempdirt))/(5) >= 35) {
-        this.tempstatus = TempStatus.VERYHOT;
-    }else if((2*(tempair)+3*(tempdirt))/(5) >= 30){
-        this.tempstatus = TempStatus.HOT;
-    }else if((2*(tempair)+3*(tempdirt))/(5) >= 25){
-        this.tempstatus = TempStatus.WARM;
-    }else if((2*(tempair)+3*(tempdirt))/(5) >= 20){
-        this.tempstatus = TempStatus.COLD;
-    }else{
-        this.tempstatus = TempStatus.VERYCOLD;
-    }
+        if((2*(tempair)+3*(tempdirt))/(5) >= 35) {
+            this.tempstatus = TempStatus.VERYHOT;
+        }else if((2*(tempair)+3*(tempdirt))/(5) >= 30){
+            this.tempstatus = TempStatus.HOT;
+        }else if((2*(tempair)+3*(tempdirt))/(5) >= 25){
+            this.tempstatus = TempStatus.WARM;
+        }else if((2*(tempair)+3*(tempdirt))/(5) >= 20){
+            this.tempstatus = TempStatus.COLD;
+        }else{
+            this.tempstatus = TempStatus.VERYCOLD;
+        }
         return tempstatus;
     }
 
@@ -54,5 +54,5 @@ public class Temperature {
     public String toString() {
         return "Temperature{ tempair = " + tempair + " celcius , tempdirt = " + tempdirt + " celcius , status = " + tempstatus + " }";
     }
-    
+
 }
