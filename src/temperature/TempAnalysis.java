@@ -91,5 +91,5 @@ public final class TempAnalysis {
             s = s + "\n" + "Plantid : " + (i + 1) + " , " + temp[i];
         }
         return "TempAnalysis(" + s + "\nAverage Temperature = " + avg() + " Status = " + statusavg + " \n)";
-    }    
+    }
 }
